@@ -41,7 +41,14 @@ func Extract(html string, uri string) (Article, error) {
 
 	// Convert to markdown.
 	converter := md.NewConverter("", true, nil)
-	markdown, err := converter.ConvertString(article.Content)
+	byline := ""
+	if article.Byline != "" {
+		byline = fmt.Sprintf("<strong>%s</strong>", article.Byline)
+	}
+	markdown, err := converter.ConvertString(
+		fmt.Sprintf("<body><h1>%s</h1>%s%s</body>", article.Title, byline, article.Content),
+	)
+
 	if err != nil {
 		log.Fatal(err)
 	}
