@@ -1,1 +1,1 @@
-go build -o scraper cmd/main.go
+go build -o scraper app/cmd/main.go

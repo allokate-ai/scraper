@@ -2,21 +2,21 @@ FROM golang:1.18-alpine as builder
 
 WORKDIR /app
 
+ENV GOPRIVATE=github.com/allokate-ai/*
+
 # Add build tools to image.
 RUN apk update \
-    && apk --no-cache --update add build-base 
+    && apk --no-cache --update add git build-base 
 RUN apk add --no-cache ca-certificates
 
 # Add modules and dependencies.
 COPY go.mod .
 COPY go.sum .
-RUN go mod download
+RUN --mount=type=secret,id=netrc,dst=/root/.netrc go mod download
 
 # Build the application.
-COPY cmd/ ./cmd/
-COPY internal/ ./internal/
-COPY pkg/ ./pkg/
-RUN CGO_ENABLED=0 go build -ldflags '-extldflags "-static"' -o bin/scraper cmd/main.go
+COPY app/ ./app/
+RUN CGO_ENABLED=0 go build -ldflags '-extldflags "-static"' -o bin/scraper app/cmd/main.go
 
 # Create non root user.
 ENV USER=user
