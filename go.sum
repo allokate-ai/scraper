@@ -13,6 +13,8 @@ github.com/alecthomas/units v0.0.0-20190717042225-c3de453c63f4/go.mod h1:ybxpYRF
 github.com/alecthomas/units v0.0.0-20190924025748-f65c72e2690d/go.mod h1:rBZYJk541a8SKzHPHnH3zbiI+7dagKZ0cgpgrD7Fyho=
 github.com/allokate-ai/auth v0.0.0-20220803234404-39d23f0986b2 h1:Eoe8jHsVRDMc54XBdhdK+p5eEpRuNVtq2RKCrhZH75Q=
 github.com/allokate-ai/auth v0.0.0-20220803234404-39d23f0986b2/go.mod h1:sN/HsrkNaZoIjH7htqJPrzTBnaY5hOj9zb0U/V58RCk=
+github.com/allokate-ai/optional v0.0.0-20220825031640-1ddf42024c43 h1:B01vwGZomPfMuZ7q6HpxFMFWBGkKNDsFZH9aInzaSe4=
+github.com/allokate-ai/optional v0.0.0-20220825031640-1ddf42024c43/go.mod h1:4OwMn1uBRuLQ8WSBagAK9/BbhGC4R0KQasudykTtV1Y=
 github.com/andybalholm/cascadia v1.1.0/go.mod h1:GsXiBklL0woXo1j/WYWtSYYC4ouU9PqHO0sqidkEA4Y=
 github.com/andybalholm/cascadia v1.2.0 h1:vuRCkM5Ozh/BfmsaTm26kbjm0mIOM3yS5Ek/F5h18aE=
 github.com/andybalholm/cascadia v1.2.0/go.mod h1:YCyR8vOZT9aZ1CHEd8ap0gMVm2aFgxBp0T0eFw1RUQY=

@@ -20,10 +20,10 @@ import (
 	"github.com/go-shiori/go-readability"
 	ginprometheus "github.com/zsais/go-gin-prometheus"
 
+	"github.com/allokate-ai/optional"
 	"github.com/allokate-ai/scraper/app/internal/config"
 	"github.com/allokate-ai/scraper/app/internal/logger"
 	"github.com/allokate-ai/scraper/app/pkg/fetch"
-	"github.com/allokate-ai/scraper/app/pkg/optional"
 )
 
 func Extract(html string, uri string) (Article, error) {
