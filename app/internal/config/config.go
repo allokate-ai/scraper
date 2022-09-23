@@ -5,7 +5,7 @@ import (
 
 	"github.com/joho/godotenv"
 
-	"github.com/allokate-ai/auth/app/pkg/environment"
+	"github.com/allokate-ai/environment"
 )
 
 type ConnectionInfo struct {

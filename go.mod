@@ -4,7 +4,8 @@ go 1.18
 
 require (
 	github.com/JohannesKaufmann/html-to-markdown v1.3.3
-	github.com/allokate-ai/auth v0.0.0-20220803234404-39d23f0986b2
+	github.com/allokate-ai/environment v0.0.0-20220811173816-5755ba0f94be
+	github.com/allokate-ai/optional v0.0.0-20220825031640-1ddf42024c43
 	github.com/chromedp/cdproto v0.0.0-20220321060548-7bc2623472b3
 	github.com/chromedp/chromedp v0.8.0
 	github.com/fluent/fluent-logger-golang v1.9.0
@@ -17,9 +18,9 @@ require (
 
 require (
 	github.com/PuerkitoBio/goquery v1.5.1 // indirect
-	github.com/allokate-ai/optional v0.0.0-20220825031640-1ddf42024c43 // indirect
 	github.com/andybalholm/cascadia v1.2.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
+	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869 // indirect
 	github.com/cespare/xxhash/v2 v2.1.1 // indirect
 	github.com/chromedp/sysutil v1.0.0 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
