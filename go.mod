@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/JohannesKaufmann/html-to-markdown v1.3.3
 	github.com/allokate-ai/environment v0.0.0-20220811173816-5755ba0f94be
-	github.com/allokate-ai/events v0.0.0-20221127022058-326b6d282470
+	github.com/allokate-ai/events v0.0.0-20221127035713-ef7c1e9a700f
 	github.com/allokate-ai/optional v0.0.0-20220825031640-1ddf42024c43
 	github.com/chromedp/cdproto v0.0.0-20220321060548-7bc2623472b3
 	github.com/chromedp/chromedp v0.8.0
