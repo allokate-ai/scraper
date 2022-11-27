@@ -9,78 +9,20 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/gin-gonic/contrib/cors"
 	"github.com/gin-gonic/gin"
 
-	md "github.com/JohannesKaufmann/html-to-markdown"
-
-	"github.com/go-shiori/go-readability"
 	ginprometheus "github.com/zsais/go-gin-prometheus"
 
+	"github.com/allokate-ai/events/app/pkg/client"
 	"github.com/allokate-ai/optional"
 	"github.com/allokate-ai/scraper/app/internal/config"
 	"github.com/allokate-ai/scraper/app/internal/logger"
 	"github.com/allokate-ai/scraper/app/pkg/fetch"
+	"github.com/allokate-ai/scraper/app/pkg/scrapper"
 )
-
-func Extract(html string, uri string) (Article, error) {
-	u, err := url.ParseRequestURI(uri)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// Parse with readability library.
-	parser := readability.NewParser()
-	article, err := parser.Parse(strings.NewReader(html), u)
-	if err != nil {
-		log.Fatalf("failed to parse %s, %v\n", uri, err)
-	}
-
-	// Convert to markdown.
-	converter := md.NewConverter("", true, nil)
-	byline := ""
-	if article.Byline != "" {
-		byline = fmt.Sprintf("<strong>%s</strong>", article.Byline)
-	}
-	markdown, err := converter.ConvertString(
-		fmt.Sprintf("<body><h1>%s</h1>%s%s</body>", article.Title, byline, article.Content),
-	)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return Article{
-		URL:      uri,
-		Title:    article.Title,
-		Byline:   article.Byline,
-		Length:   article.Length,
-		Excerpt:  article.Excerpt,
-		SiteName: article.SiteName,
-		Image:    article.Image,
-		Favicon:  article.Favicon,
-		Content:  article.Content,
-		Markdown: markdown,
-		Fetched:  time.Now().Format(time.RFC3339),
-	}, nil
-}
-
-type Article struct {
-	URL      string `json:"url"`
-	Title    string `json:"title"`
-	Byline   string `json:"byline"`
-	Length   int    `json:"length"`
-	Excerpt  string `json:"excerpt"`
-	SiteName string `json:"siteName"`
-	Image    string `json:"image"`
-	Favicon  string `json:"favicon"`
-	Content  string `json:"content"`
-	Markdown string `json:"markdown"`
-	Fetched  string `json:"fetched"`
-}
 
 func main() {
 	l := logger.Get()
@@ -160,11 +102,29 @@ func main() {
 			})
 		}
 
-		article, err := Extract(html, url.String())
+		article, err := scrapper.Scrape(html, url.String())
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"error": err,
 			})
+		}
+
+		if _, err := client.Default().EmitArticleScrapedEvent("scraper", client.ArticleScraped{
+			Url:      article.Url,
+			Title:    article.Title,
+			Byline:   article.Byline,
+			Length:   article.Length,
+			Excerpt:  article.Excerpt,
+			SiteName: article.SiteName,
+			Image:    article.Image,
+			Favicon:  article.Favicon,
+			Content:  article.Content,
+			Markdown: article.Markdown,
+			Fetched:  article.Fetched,
+		}); err != nil {
+			log.Fatal(err)
+		} else {
+			log.Printf("Failed to publish article scrape event")
 		}
 
 		c.JSON(http.StatusOK, article)
@@ -206,11 +166,29 @@ func main() {
 			return
 		}
 
-		article, err := Extract(body.Document.MustGet(), body.Url.MustGet())
+		article, err := scrapper.Scrape(body.Document.MustGet(), body.Url.MustGet())
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"error": err,
 			})
+		}
+
+		if _, err := client.Default().EmitArticleScrapedEvent("scraper", client.ArticleScraped{
+			Url:      article.Url,
+			Title:    article.Title,
+			Byline:   article.Byline,
+			Length:   article.Length,
+			Excerpt:  article.Excerpt,
+			SiteName: article.SiteName,
+			Image:    article.Image,
+			Favicon:  article.Favicon,
+			Content:  article.Content,
+			Markdown: article.Markdown,
+			Fetched:  article.Fetched,
+		}); err != nil {
+			log.Fatal(err)
+		} else {
+			log.Printf("Failed to publish article scrape event")
 		}
 
 		c.JSON(http.StatusOK, article)

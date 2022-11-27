@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/JohannesKaufmann/html-to-markdown v1.3.3
 	github.com/allokate-ai/environment v0.0.0-20220811173816-5755ba0f94be
+	github.com/allokate-ai/events v0.0.0-20221127022058-326b6d282470
 	github.com/allokate-ai/optional v0.0.0-20220825031640-1ddf42024c43
 	github.com/chromedp/cdproto v0.0.0-20220321060548-7bc2623472b3
 	github.com/chromedp/chromedp v0.8.0
@@ -33,6 +34,7 @@ require (
 	github.com/gobwas/ws v1.1.0 // indirect
 	github.com/gogs/chardet v0.0.0-20191104214054-4b6791f73a28 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
