@@ -13,12 +13,6 @@ github.com/alecthomas/units v0.0.0-20190717042225-c3de453c63f4/go.mod h1:ybxpYRF
 github.com/alecthomas/units v0.0.0-20190924025748-f65c72e2690d/go.mod h1:rBZYJk541a8SKzHPHnH3zbiI+7dagKZ0cgpgrD7Fyho=
 github.com/allokate-ai/environment v0.0.0-20220811173816-5755ba0f94be h1:qw639wGMZ1oBkeze5RHbTu6mubNRORvFVKHY7RXLk18=
 github.com/allokate-ai/environment v0.0.0-20220811173816-5755ba0f94be/go.mod h1:Td3yQwZPixqUIUkHsWmSaSCFXXD2Xvrzjm6vFh1hJLM=
-github.com/allokate-ai/events v0.0.0-20221127022058-326b6d282470 h1:9F3nEQ6NvkX+orU6lImDFGqq/R7QZJI66gwGDCWSxFc=
-github.com/allokate-ai/events v0.0.0-20221127022058-326b6d282470/go.mod h1:5rZCxbUVPp24Mjr63/4StOyOeFiGWvf4BQ6vI3sESD0=
-github.com/allokate-ai/events v0.0.0-20221127035557-87a31c1f0628 h1:WlGE+C3APyZtZx5HYeac+4XTpOeRFOz567USag9PeDs=
-github.com/allokate-ai/events v0.0.0-20221127035557-87a31c1f0628/go.mod h1:5rZCxbUVPp24Mjr63/4StOyOeFiGWvf4BQ6vI3sESD0=
-github.com/allokate-ai/events v0.0.0-20221127035713-ef7c1e9a700f h1:xRxqxdfRtIKm9E7o5wFXdmlU8WM6+7Aq+s2JGJ87Pf4=
-github.com/allokate-ai/events v0.0.0-20221127035713-ef7c1e9a700f/go.mod h1:5rZCxbUVPp24Mjr63/4StOyOeFiGWvf4BQ6vI3sESD0=
 github.com/allokate-ai/optional v0.0.0-20220825031640-1ddf42024c43 h1:B01vwGZomPfMuZ7q6HpxFMFWBGkKNDsFZH9aInzaSe4=
 github.com/allokate-ai/optional v0.0.0-20220825031640-1ddf42024c43/go.mod h1:4OwMn1uBRuLQ8WSBagAK9/BbhGC4R0KQasudykTtV1Y=
 github.com/andybalholm/cascadia v1.1.0/go.mod h1:GsXiBklL0woXo1j/WYWtSYYC4ouU9PqHO0sqidkEA4Y=
@@ -121,8 +115,6 @@ github.com/google/go-cmp v0.5.4/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/
 github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/gofuzz v1.0.0/go.mod h1:dBl0BpW6vV/+mYPU4Po3pmUjxk6FQPldtuIdl/M65Eg=
-github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
-github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/gorilla/websocket v1.4.0/go.mod h1:E7qHFY5m1UJ88s3WnNqhKjPHQ0heANvMoAMk2YaljkQ=
 github.com/grpc-ecosystem/go-grpc-middleware v1.0.0/go.mod h1:FiyG127CGDf3tlThmgyCl78X/SZQqEOJBCDaAfeWzPs=
 github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0/go.mod h1:8NvIoxWQoOIhqOTXgfV/d3M/q6VIi02HzZEHgUlZvzk=

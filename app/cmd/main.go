@@ -16,12 +16,11 @@ import (
 
 	ginprometheus "github.com/zsais/go-gin-prometheus"
 
-	"github.com/allokate-ai/events/app/pkg/client"
 	"github.com/allokate-ai/optional"
 	"github.com/allokate-ai/scraper/app/internal/config"
 	"github.com/allokate-ai/scraper/app/internal/logger"
 	"github.com/allokate-ai/scraper/app/pkg/fetch"
-	"github.com/allokate-ai/scraper/app/pkg/scrapper"
+	scraper "github.com/allokate-ai/scraper/app/pkg/scraper"
 )
 
 func main() {
@@ -102,29 +101,11 @@ func main() {
 			})
 		}
 
-		article, err := scrapper.Scrape(html, url.String())
+		article, err := scraper.Scrape(html, url.String())
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"error": err,
 			})
-		}
-
-		if _, err := client.Default().EmitArticleScrapedEvent("scraper", client.ArticleScraped{
-			Url:      article.Url,
-			Title:    article.Title,
-			Byline:   article.Byline,
-			Length:   article.Length,
-			Excerpt:  article.Excerpt,
-			SiteName: article.SiteName,
-			Image:    article.Image,
-			Favicon:  article.Favicon,
-			Content:  article.Content,
-			Markdown: article.Markdown,
-			Fetched:  article.Fetched,
-		}); err != nil {
-			log.Fatal(err)
-		} else {
-			log.Printf("Failed to publish article scrape event")
 		}
 
 		c.JSON(http.StatusOK, article)
@@ -166,29 +147,11 @@ func main() {
 			return
 		}
 
-		article, err := scrapper.Scrape(body.Document.MustGet(), body.Url.MustGet())
+		article, err := scraper.Scrape(body.Document.MustGet(), body.Url.MustGet())
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"error": err,
 			})
-		}
-
-		if _, err := client.Default().EmitArticleScrapedEvent("scraper", client.ArticleScraped{
-			Url:      article.Url,
-			Title:    article.Title,
-			Byline:   article.Byline,
-			Length:   article.Length,
-			Excerpt:  article.Excerpt,
-			SiteName: article.SiteName,
-			Image:    article.Image,
-			Favicon:  article.Favicon,
-			Content:  article.Content,
-			Markdown: article.Markdown,
-			Fetched:  article.Fetched,
-		}); err != nil {
-			log.Fatal(err)
-		} else {
-			log.Printf("Failed to publish article scrape event")
 		}
 
 		c.JSON(http.StatusOK, article)
